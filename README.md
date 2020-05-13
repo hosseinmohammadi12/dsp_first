@@ -1,12 +1,4 @@
----
-tags: [Import-ae2e]
-title: DSP first
-created: '2020-05-07T03:43:09.415Z'
-modified: '2020-05-13T13:59:01.034Z'
----
-
 # DSP first
-
 
 ## Guide To From GitHub And Create Virtual Environment For The Project
 ```console
@@ -28,15 +20,16 @@ foo@bar:~$ pip3 install -r requirements.txt
     + Half-Wave rectified Cosine 
   - Run the fseriesdemo (in *dsp_first* directory)
     ```console
-    foo@bar:~$ python fseriesdemo/fseriesdemo.py
+    foo@bar:~$ cd fseriesdemo/
+    foo@bar:~$ python fseriesdemo.py
     ```  
 ### sindrill 
   - ***Sindrill** is a program that helps master the understanding of sinusoids and enhances the ability to quickly identify their essential characteristics.*
-  - Run the sindrill (in *dsp_first* directory)
-    * ```console
-     foo@bar:~$ cd sindrill/
-     foo@bar:~$ python sindrill/sindrill.py
-  ```  
+  - Run the sindrill (in *dsp_first* directory) 
+    ```console
+    foo@bar:~$ cd sindrill/
+    foo@bar:~$ python sindrill.py
+    ```  
 ### amdemod
   - *Demodulate an amplitude modulated waveform using a simple scheme  consisting of a rectifier followed by a leaky first-order hold scheme.*
   **usage** : dd = amdemod(xx,fc,fs,tau)
