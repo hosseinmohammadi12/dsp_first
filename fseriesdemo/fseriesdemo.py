@@ -92,7 +92,7 @@ class FourierSeries(QObject):
     def getYval(self):
         return self._yval
 
-    @pyqtSlot(int, int)          #      Dikkat!! eger qml'den veri almak istiyorsan slot()'da degisken sayasi ve veri tiplerini belirlemen gerek.
+    @pyqtSlot(int, int)
     def updateYval(self, cbx_value, T0):
 #        print(cbx_value, T0)
         timeaxis = np.arange(-30, 30+0.1, 0.1)
@@ -211,7 +211,6 @@ class FourierSeries(QObject):
                 mag_spec = -(np.exp(-1j*2*np.pi*n) + 1)/(np.pi*(4*n**2 -1))
                 if cbx_value == 4:
                     # Cosine wave
-                # mag_spec = np.exp(-1j*n*np.pi)*mag_spec
                     mag_spec = 2*np.cos(n*np.pi) / (np.pi*(1-4*n**2))
 
                 rec_sig = mag_spec * np.exp(1j*2*np.pi*freq*n*timeaxis)
@@ -254,7 +253,7 @@ class FourierSeries(QObject):
 
 
 
-    #   pyqtProperty
+    # pyqtProperty
     yval = pyqtProperty(list, getYval, notify=sig_yval)
     timeaxis = pyqtProperty(list, getTimeaxis, notify=sig_timeaxis)
     synthesized = pyqtProperty(list, getSynthesized, notify=sig_synthesized)

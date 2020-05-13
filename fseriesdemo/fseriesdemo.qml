@@ -16,7 +16,7 @@ ApplicationWindow {
         width: root.width
         height: root.height
 
-        color: "white" //"#e1e6db" //"#adafab"
+        color: "white"
         clip: false
 
         Grid {
@@ -38,7 +38,7 @@ ApplicationWindow {
                     id: recSigType
                     width: gridCustom.width
                     height: 25
-                    color: "#60bce1"//"#79b554"
+                    color: "#60bce1"
                     clip: false
 
                     Label {
@@ -95,7 +95,6 @@ ApplicationWindow {
                         phaseSpectrum.clear()
 
                         // Check if error show CheckBox is true or not
-
                         if (chbxShowError.checked == true) {
                             originalSignal.visible = false
                             synthrsizedSignal.visible = false
@@ -195,7 +194,6 @@ ApplicationWindow {
                         errorSignal.clear()
 
                         // Check if error show CheckBox is true or not
-
                         if (chbxShowError.checked == true) {
                             originalSignal.visible = false
                             synthrsizedSignal.visible = false
@@ -237,7 +235,7 @@ ApplicationWindow {
                 columns: 1
                 spacing: 10
                 Rectangle {
-                    id: recInfFC // FC = fourier coefficients
+                    id: recInfFC
                     width: gridCustom.width
                     height: 90
                     color: "#60bce1"
@@ -310,7 +308,6 @@ ApplicationWindow {
                             errorSignal.clear()
 
                             // Check if error show CheckBox is true or not
-
                             if (chbxShowError.checked == true) {
                                 originalSignal.visible = false
                                 synthrsizedSignal.visible = false
@@ -437,40 +434,6 @@ ApplicationWindow {
                     visible: false  // important point to delete duplicates
                     color: "blue"
                     width: 1
-                }
-
-                Component.onCompleted:
-                {
-//                    // Set default value of GUI components & Create default plots
-//                    sliderPeriod.value = 10
-//                    sliderFC.value = 0
-//                    cbxSignaltypes.currentIndex = 0
-
-//                    FS.updateYval(cbxSignaltypes.currentIndex, sliderPeriod.value)
-//                    FS.updateSynthesized(sliderFC.value, cbxSignaltypes.currentIndex, sliderPeriod.value)
-
-//                    var timeaxis = FS.timeaxis
-//                    var yval = FS.yval
-//                    var synthesized = FS.synthesized
-//                    var absMag = FS.abs_mag
-//                    var angMag = FS.ang_mag
-//                    var n = 0
-
-
-//                    for(var i = 0; i < yval.length; i++){
-
-//                        originalSignal.append(timeaxis[i], yval[i])
-//                        synthrsizedSignal.append(timeaxis[i], synthesized[i])
-//                        errorSignal.append(timeaxis[i], yval[i]- synthesized[i])
-
-//                    }
-
-
-//                    // set axis
-//                    waveAxisX.min = timeaxis[0]; waveAxisX.max = timeaxis[timeaxis.length -1]
-//                    waveAxisY.min = -1.2; waveAxisY.max = 1.2
-
-
                 }
 
             }
@@ -606,7 +569,6 @@ ApplicationWindow {
                 errorSignal.clear()
 
                 // Check if error show CheckBox is true or not
-
                 if (chbxShowError.checked == true) {
                     originalSignal.visible = false
                     synthrsizedSignal.visible = false
@@ -659,10 +621,15 @@ ApplicationWindow {
 
                 if(checked == true){
                     console.log('yes')
-                    magSpectrum.pointLabelsFormat = "(@xPoint Hz)"//, @yPoint dB)"
+                    magSpectrum.pointLabelsFormat = "(@xPointHz)"//, @yPoint dB)"
                     magSpectrum.pointLabelsVisible = true
+                    // magAxisX.min = -15/sliderPeriod.value
+                    // magAxisX.max = 15/sliderPeriod.value
+
                 }else {
                     magSpectrum.pointLabelsVisible = false
+                    // magAxisX.min = -15
+                    // magAxisX.max = 15
                 }
 
 
@@ -718,8 +685,8 @@ ApplicationWindow {
 
         Rectangle {
             id: recMagAmp
-            x: 15//37
-            y: 320//340//98
+            x: 15
+            y: 320
             width: 90
             height: 22
             color: "#ffffff"
@@ -742,8 +709,8 @@ ApplicationWindow {
 
         Rectangle {
             id: recPhase
-            x: 15//37
-            y: 510//550//98
+            x: 15
+            y: 510
             width: 90
             height: 22
             color: "#ffffff"
@@ -824,9 +791,7 @@ ApplicationWindow {
             Label {
                 id: lblWave
                 text: qsTr("WaveForm of the")
-                //                font.bold: true
                 font.pointSize: 10
-                //                font.italic: true
                 font.weight: Font.Light
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -851,9 +816,7 @@ ApplicationWindow {
             Label {
                 id: lblMagSpec
                 text: qsTr("Magnitude Spectrum")
-                //                font.bold: true
                 font.pointSize: 10
-                //                font.italic: true
                 font.weight: Font.Light
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -877,9 +840,7 @@ ApplicationWindow {
             Label {
                 id: lblPhasespec
                 text: qsTr("Phase Spectrum")
-                //                font.bold: true
                 font.pointSize: 10
-                //                font.italic: true
                 font.weight: Font.Light
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
