@@ -211,7 +211,7 @@ ApplicationWindow {
 
                 Row {
                     id: rowQuiz
-                    x: ioFrame.width/2 - rowQuiz.width/4 + 18//285//326
+                    x: ioFrame.width/2 - rowQuiz.width/4 + 18
                     y: 150
                     width: 302
                     height: 53
@@ -293,7 +293,6 @@ ApplicationWindow {
 
                                  } catch (e) {
 
-//                                    console.log(e.message)
                                     phi = '0'
                                     A = '0'
                                     f0 = '0'
