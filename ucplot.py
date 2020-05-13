@@ -2,6 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import argparse
 
 
 def ucplot(radius, center=None, arg3=None):
@@ -10,10 +11,6 @@ def ucplot(radius, center=None, arg3=None):
         huc = ucplot( radius, center, linetype )
         radius: (default = 1)
         center: complex number (x+j*y) (default = 0)
-        linetype: any valid MATLAB type (see help plot)
-            huc: handle to plot of the circle
-
-	See also ZVECT
     """
 
     linetype = 'b:'
@@ -40,3 +37,9 @@ def ucplot(radius, center=None, arg3=None):
     plt.show()
 
     return u
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-s","--sayi",required = True)
+    args = vars(ap.parse_args())   
+    uc = ucplot(int(args["sayi"]))
