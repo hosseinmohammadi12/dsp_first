@@ -16,11 +16,12 @@ class CconvDemo(QObject):
     def __init__(self):
         QObject.__init__(self)
         self.cosine = 0
-    
+        self.t = 0    
     
 
     # signals 
     sig_cos = pyqtSignal(list)
+    sig_t = pyqtSignal(list)
     
 
     # getters & setters
@@ -31,6 +32,14 @@ class CconvDemo(QObject):
         self.sig_cos.emit(self.cosine)
     def getCos(self):
         return self.cosine
+    
+    def setT(self, t):
+        if self.t != t:
+            self.t = t
+        self.sig_t.emit(self.t)
+    
+    def getT(self):
+        return self.t
             
 
     # get cosine parameters (amplitude, period, phase, length, delay)
@@ -39,6 +48,7 @@ class CconvDemo(QObject):
         cosine = Cosine()
         cosine.cosine(amplitude, period, phase, length, delay)
         self.cosine = cosine.y.tolist()
+        self.t = cosine.t.tolist()
         # plt.plot(cosine.t,cosine.y)
         # plt.show()
         
@@ -47,6 +57,7 @@ class CconvDemo(QObject):
     ##################### pyqtProperty #######################
     ##########################################################
     scos = pyqtProperty(list, getCos, notify=sig_cos)
+    st = pyqtProperty(list, getT, notify=sig_t)
 
 
 if __name__ == "__main__":

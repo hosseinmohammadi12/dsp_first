@@ -133,9 +133,37 @@ ApplicationWindow {
                         antialiasing: true
                         anchors.fill: parent
 
-                        LineSeries {
+                        ValueAxis {
+                            id: axisY
+                        }
+                        ValueAxis {
+                            id: axisX
 
                         }
+
+                        LineSeries {
+                            id: sig
+                            axisX: axisX
+                            axisY: axisY
+
+
+                        }
+
+                        Component.onCompleted:{
+
+                            var cosine = ccd.scos
+                            var t = ccd.st
+
+                            for(var i = 0; i < cosine.length; i++ ) {
+                                sig.append(t[i], cosine[i])
+                            }
+                            axisX.max = t[t.length -1]
+                            axisX.min = t[0]
+//                            console.log(t[t.length -1] + " " + t[0] + " " + Math.min.apply(null, cosine) + " " + Math.max.apply(null, cosine))
+
+                            axisY.min = Math.min.apply(null, cosine)
+                            axisY.max = Math.max.apply(null, cosine)
+                         }
 
                     }
 

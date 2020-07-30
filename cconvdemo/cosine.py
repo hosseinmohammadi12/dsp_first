@@ -47,5 +47,6 @@ class Cosine:
 if __name__ == "__main__":
     cos = Cosine()
     cos.init()
+    # print(min(cos.y))
 
 
